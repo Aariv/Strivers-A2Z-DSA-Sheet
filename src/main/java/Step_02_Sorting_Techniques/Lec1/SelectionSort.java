@@ -7,7 +7,7 @@ public class SelectionSort {
 	public static void main(String[] args) {
 		int[] nums = {5, 2, 8, 1, 3};
 		
-		selectionSort2(nums);
+		selectionSortRecur(nums);
 		
 		System.out.println(Arrays.toString(nums));
 	}
@@ -50,5 +50,32 @@ public class SelectionSort {
 				nums[minIdx] = temp;
 			}
 		}
+	}
+	
+	private static void selectionSortRecur(int[] nums) {
+		selectionSortRecur(nums, 0);
+	}
+
+	private static void selectionSortRecur(int[] nums, int startIndex) {
+		int n = nums.length;
+		if(startIndex >= n-1)
+			return;
+		
+		// Find the min
+		int minIdx = startIndex;
+		for(int i = startIndex + 1; i < n; i++) {
+			if(nums[i] < nums[minIdx]) {
+				minIdx = i;
+			}
+		}
+		
+		// Swap
+		if(minIdx != startIndex) {
+			int temp = nums[startIndex];
+			nums[startIndex] = nums[minIdx];
+			nums[minIdx] = temp;
+		}
+		
+		selectionSortRecur(nums, startIndex+1);
 	}
 }
