@@ -46,6 +46,38 @@ minIndex = 3 → 5
  minIndex == i, so no swap
 Array remains: [1, 2, 3, 5, 8]
 ```
+### Bubble Sort Logic Recap:
+
+```
+Initial Array:- [5, 1, 4, 2, 8]
+🔁 Pass 1 (i = 0)
+Compare and swap adjacent pairs:
+Comparison	Action	Array After
+5 vs 1	Swap	[1, 5, 4, 2, 8]
+5 vs 4	Swap	[1, 4, 5, 2, 8]
+5 vs 2	Swap	[1, 4, 2, 5, 8]
+5 vs 8	No swap	[1, 4, 2, 5, 8]
+🔹 Largest element (8) bubbled to the end.
+
+🔁 Pass 2 (i = 1)
+Comparison	Action	Array After
+1 vs 4	No swap	[1, 4, 2, 5, 8]
+4 vs 2	Swap	[1, 2, 4, 5, 8]
+4 vs 5	No swap	[1, 2, 4, 5, 8]
+🔹 Second-largest (5) in place.
+
+🔁 Pass 3 (i = 2)
+Comparison	Action	Array After
+1 vs 2	No swap	[1, 2, 4, 5, 8]
+2 vs 4	No swap	[1, 2, 4, 5, 8]
+
+🔹 No swaps → Array is sorted early!
+
+✅ Final Sorted Array: [1, 2, 4, 5, 8]
+```
+
+
+
 
  
 
