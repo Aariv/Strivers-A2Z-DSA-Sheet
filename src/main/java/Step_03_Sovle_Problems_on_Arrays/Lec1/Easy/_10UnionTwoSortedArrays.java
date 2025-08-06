@@ -59,4 +59,30 @@ public class _10UnionTwoSortedArrays {
         return result;
     }
 	
+	public static List<Integer> intersection(int[] arr1, int[] arr2) {
+        List<Integer> result = new ArrayList<>();
+        int i = 0, j = 0;
+
+        while (i < arr1.length && j < arr2.length) {
+            // Skip duplicates in arr1
+            if (i > 0 && arr1[i] == arr1[i - 1]) {
+                i++;
+                continue;
+            }
+
+            if (arr1[i] < arr2[j]) {
+                i++;
+            } else if (arr2[j] < arr1[i]) {
+                j++;
+            } else {
+                // Found common element
+                result.add(arr1[i]);
+                i++;
+                j++;
+            }
+        }
+
+        return result;
+    }
+	
 }
