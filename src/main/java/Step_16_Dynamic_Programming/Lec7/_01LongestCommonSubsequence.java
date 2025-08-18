@@ -2,6 +2,7 @@ package Step_16_Dynamic_Programming.Lec7;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class _01LongestCommonSubsequence {
 
@@ -11,6 +12,7 @@ public class _01LongestCommonSubsequence {
 	}
 	
 	public static int lengthOfLIS(int[] nums) {
+		
         int n = nums.length;
         int[] dp = new int[n];
         int maxLen = 1;
