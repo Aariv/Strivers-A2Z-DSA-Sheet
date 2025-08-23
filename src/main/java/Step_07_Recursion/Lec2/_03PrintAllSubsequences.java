@@ -6,8 +6,9 @@ import java.util.List;
 public class _03PrintAllSubsequences {
 
 	public static void main(String[] args) {
-		int[] arr = {1, 2, 3};
-		System.out.println(powerSet(arr));
+//		int[] arr = {1, 2, 3};
+		int[] arr = {5, 2, 1};
+		System.out.println(powerSetSum(arr));
 	}
 
 	private static List<List<Integer>> powerSet(int[] arr) {
@@ -29,5 +30,30 @@ public class _03PrintAllSubsequences {
 		// Not Pick
 		inner.remove(inner.size()-1);
 		powerSet(n, idx + 1, inner, result, arr);
+	}
+	
+	private static List<Integer> powerSetSum(int[] arr) {
+		List<Integer> result = new ArrayList<Integer>();
+		List<Integer> inner = new ArrayList<Integer>();
+		int sum = 0;
+		powerSetSum(arr.length, 0, inner, result, arr, sum);
+		return result;
+	}
+
+	private static void powerSetSum(int n, int idx, List<Integer> inner, List<Integer> result, int[] arr, int sum) {
+		if(idx == n) {
+			result.add(sum);
+//			sum = 0;
+			return;
+		}
+		
+		// Pick
+//		sum += arr[idx];
+//		inner.add(arr[idx]);
+		powerSetSum(n, idx + 1, inner, result, arr, sum + arr[idx]);
+		// Not Pick
+//		inner.remove(inner.size()-1);
+//		sum -= arr[idx];
+		powerSetSum(n, idx + 1, inner, result, arr, sum);
 	}
 }
