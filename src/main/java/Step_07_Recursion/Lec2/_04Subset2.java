@@ -7,8 +7,8 @@ public class _04Subset2 {
 
 	public static void main(String[] args) {
 //		int[] arr = {1, 2, 2};
-		int[] arr = {5, 2, 1};
-		System.out.println(powerSetLoopSum(arr));
+		int[] arr = {2,1,2};
+		System.out.println(powerSetLoop(arr));
 	}
 
 	private static List<List<Integer>> powerSet(int[] arr) {
