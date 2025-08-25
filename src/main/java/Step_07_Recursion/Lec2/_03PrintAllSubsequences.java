@@ -11,14 +11,14 @@ public class _03PrintAllSubsequences {
 		System.out.println(powerSetSum(arr));
 	}
 
-	private static List<List<Integer>> powerSet(int[] arr) {
+	private static List<List<Integer>> printSubSequence(int[] arr) {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		List<Integer> inner = new ArrayList<Integer>();
-		powerSet(arr.length, 0, inner, result, arr);
+		printSubSequence(arr.length, 0, inner, result, arr);
 		return result;
 	}
 
-	private static void powerSet(int n, int idx, List<Integer> inner, List<List<Integer>> result, int[] arr) {
+	private static void printSubSequence(int n, int idx, List<Integer> inner, List<List<Integer>> result, int[] arr) {
 		if(idx == n) {
 			result.add(new ArrayList<Integer>(inner));
 			return;
@@ -26,10 +26,10 @@ public class _03PrintAllSubsequences {
 		
 		// Pick
 		inner.add(arr[idx]);
-		powerSet(n, idx + 1, inner, result, arr);
+		printSubSequence(n, idx + 1, inner, result, arr);
 		// Not Pick
 		inner.remove(inner.size()-1);
-		powerSet(n, idx + 1, inner, result, arr);
+		printSubSequence(n, idx + 1, inner, result, arr);
 	}
 	
 	private static List<Integer> powerSetSum(int[] arr) {

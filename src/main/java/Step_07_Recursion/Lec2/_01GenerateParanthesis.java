@@ -3,11 +3,10 @@ package Step_07_Recursion.Lec2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class _02GenerateParanthesis {
+public class _01GenerateParanthesis {
 
 	public static void main(String[] args) {
 		int n = 3;
-		
 		generateParanthesis(n);
 	}
 

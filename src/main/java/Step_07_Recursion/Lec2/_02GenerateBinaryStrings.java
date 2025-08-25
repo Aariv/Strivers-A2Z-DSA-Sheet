@@ -3,7 +3,7 @@ package Step_07_Recursion.Lec2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class _01GenerateBinaryStrings {
+public class _02GenerateBinaryStrings {
 
 	public static void generate(int n, String current) {
         if (current.length() == n) {

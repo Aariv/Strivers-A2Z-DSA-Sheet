@@ -15,4 +15,9 @@ public class _02Pow {
 			System.out.print(i + " ");
 		}
 	}
+	
+	public double myPow(double x, int n) {
+		//
+		return 0;
+	}
 }
