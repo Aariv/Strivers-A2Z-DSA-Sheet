@@ -73,6 +73,9 @@ public class _02FrogJump {
 		if(n == 0) {
 			return dp[n] = 0;
 		}
+		if(dp[n]!=-1) {
+			return dp[n];
+		}
 		int j1 = Math.abs(heights[n] - heights[n-1]) + frogJumpMemoization(heights, n-1, dp);
 		int j2 = Integer.MAX_VALUE;
 		if(n > 1)
