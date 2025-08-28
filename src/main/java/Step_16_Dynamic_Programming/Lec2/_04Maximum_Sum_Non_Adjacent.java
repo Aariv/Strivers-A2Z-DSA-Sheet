@@ -26,8 +26,9 @@ public class _04Maximum_Sum_Non_Adjacent {
 
 	public static void main(String[] args) {
 		int[] nums = {2, 1, 4, 9};
-		System.out.println(maxSumNonAdjacentMemoization(nums));
-		System.out.println("Tab:- " + maxSumNonAdjacentTabulation(nums));
+		System.out.println("Recur: "+ sum(nums, nums.length-1));
+		System.out.println("Memoization: " + maxSumNonAdjacentMemoization(nums));
+		System.out.println("Tab: " + maxSumNonAdjacentTabulation(nums));
 	}
 	
 	private static int maxSumNonAdjacentTabulation(int[] nums) {
@@ -65,6 +66,19 @@ public class _04Maximum_Sum_Non_Adjacent {
 		}
 		int pick = nums[ind] + sum(nums, ind-2, dp);
 		int notPick = 0 + sum(nums, ind-1, dp);
+		
+		return Math.max(pick, notPick);
+	}
+	
+	private static int sum(int[] nums, int ind) {
+		if(ind == 0) {
+			return nums[0];
+		}
+		if(ind < 0) {
+			return 0;
+		}
+		int pick = nums[ind] + sum(nums, ind-2);
+		int notPick = 0 + sum(nums, ind-1);
 		
 		return Math.max(pick, notPick);
 	}

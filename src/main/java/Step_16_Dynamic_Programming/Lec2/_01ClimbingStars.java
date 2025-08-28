@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class _01ClimbingStars {
 
 	public static void main(String[] args) {
-		fib(3);
+		fib(4);
 	}
 
 	private static void fib(int n) {
