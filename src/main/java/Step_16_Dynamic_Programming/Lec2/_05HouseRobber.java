@@ -31,6 +31,11 @@ public class _05HouseRobber {
 		System.out.println("Tab: " + maxSumNonAdjacentTabulation(nums));
 	}
 	
+	/**
+	 * 
+	 * @param nums
+	 * @return
+	 */
 	private static int maxSumNonAdjacentTabulation(int[] nums) {
 		int n = nums.length;
 		int[] dp = new int[n];
