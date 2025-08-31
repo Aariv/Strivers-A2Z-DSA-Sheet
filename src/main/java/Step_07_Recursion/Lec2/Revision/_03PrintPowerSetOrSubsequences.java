@@ -50,15 +50,18 @@ public class _03PrintPowerSetOrSubsequences {
 		printSubSequence(n, idx + 1, inner, result, arr);
 	}
 	
+	// Better approach
 	private static void printSubSequenceLoop(
 										int n,
 										int idx,
 										List<Integer> inner,
 										List<List<Integer>> result,
 										int[] arr) {
+		// Keep on adding the results
 		result.add(new ArrayList<Integer>(inner));
 		for(int i = idx; i < n; i++) {
 			inner.add(arr[i]);
+			// recursive call to explore all possible scenarios
 			printSubSequenceLoop(n, i+1, inner, result, arr);
 			inner.remove(inner.size()-1);
 		}

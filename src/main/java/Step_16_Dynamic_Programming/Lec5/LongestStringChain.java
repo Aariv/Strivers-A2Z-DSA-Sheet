@@ -25,4 +25,5 @@ public class LongestStringChain {
         }
         return maxLen;
     }
+
 }

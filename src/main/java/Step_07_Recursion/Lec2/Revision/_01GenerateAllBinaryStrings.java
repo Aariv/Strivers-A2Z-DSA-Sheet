@@ -35,18 +35,23 @@ public class _01GenerateAllBinaryStrings {
 	public static List<String> generateBinaryStrings(int n) {
 		StringBuilder sb = new StringBuilder();
 		List<String> result = new ArrayList<String>();
+		// n, result, sb (for better performance)
 		generate(n, result, sb);
 		return result;
 	}
 
 	private static void generate(int n, List<String> result, StringBuilder sb) {
+		// stop as long as the length is equal to n
 		if(sb.toString().length() == n) {
 			result.add(sb.toString());
 			return;
 		}
+		// add zero till it reaches n
 		sb.append("0"); 
 		generate(n, result, sb);
+		// remove for not pick scenario
 		sb.deleteCharAt(sb.length()-1);
+		// add one
 		sb.append("1");
 		generate(n, result, sb);
 		sb.deleteCharAt(sb.length()-1);

@@ -29,6 +29,7 @@ public class _05CheckPowerSetOrSubsequencesSumKExists {
 		int[] arr = {1, 2, 3, 4, 5};
 		int k = 33;
 		System.out.println(countSubsequenceWithTargetSum(arr, k).size() > 0 ? "Yes" : "No");
+		System.out.println(countSubsequenceWithTargetSumExists(arr, k) ? "Yes" :"No");
 	}
 	
 	private static List<List<Integer>> countSubsequenceWithTargetSum(int[] arr, int target) {
@@ -54,11 +55,12 @@ public class _05CheckPowerSetOrSubsequencesSumKExists {
 		// Pick
 		inner.add(arr[idx]);
 		countSubsequenceWithTargetSum(n, idx + 1, inner, result, arr, target - arr[idx]);
+		inner.remove(inner.size()-1);// backtrack
 		// Not Pick
-		inner.remove(inner.size()-1);
 		countSubsequenceWithTargetSum(n, idx + 1, inner, result, arr, target - arr[idx]);
 	}
 	
+	// Same as PowerSet and target sum, but return True if sum exists. 
 	private static void countSubsequenceWithTargetSumL(
 										int n,
 										int idx,
@@ -78,5 +80,28 @@ public class _05CheckPowerSetOrSubsequencesSumKExists {
 			countSubsequenceWithTargetSumL(n, i+1, inner, result, arr, target - arr[i]);
 			inner.remove(inner.size()-1);
 		}
+	}
+	
+	private static boolean countSubsequenceWithTargetSumExists(int[] arr, int target) {
+		return countSubsequenceWithTargetSumExists(0, 0, arr, target);
+	}
+	
+	private static boolean countSubsequenceWithTargetSumExists(int sum, int idx, int[] arr, int target) {
+		// Base case: if we reached the end
+        if (idx == arr.length) {
+            return sum == target;
+        }
+
+        // Pick the element
+        if (countSubsequenceWithTargetSumExists(sum + arr[idx], idx + 1, arr, target)) {
+            return true;
+        }
+
+        // Not pick the element
+        if (countSubsequenceWithTargetSumExists(sum, idx+1, arr, target)) {
+            return true;
+        }
+
+        return false; // No subsequence found
 	}
 }

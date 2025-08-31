@@ -25,8 +25,8 @@ import java.util.List;
 public class _04PrintPowerSetOrSubsequencesSumK {
 
 	public static void main(String[] args) {
-		int[] arr = {4, 5, 1};
-		int k = 6;
+		int[] arr = {4, 9, 2, 5, 1};
+		int k = 10;
 		System.out.println(countSubsequenceWithTargetSum(arr, k));
 	}
 	
@@ -58,6 +58,7 @@ public class _04PrintPowerSetOrSubsequencesSumK {
 		countSubsequenceWithTargetSum(n, idx + 1, inner, result, arr, target - arr[idx]);
 	}
 	
+	// Same as Powerset and Subsequences logic
 	private static void countSubsequenceWithTargetSumL(
 										int n,
 										int idx,
@@ -69,11 +70,13 @@ public class _04PrintPowerSetOrSubsequencesSumK {
 			result.add(new ArrayList<Integer>(inner));
 			return;
 		}
+		// If target is less then it means it is unnecessary to calculate further. 
 		if(target < 0) {
 			return;
 		}
 		for(int i = idx; i < n; i++) {
 			inner.add(arr[i]);
+			// Keep on decrementing the target sum
 			countSubsequenceWithTargetSumL(n, i+1, inner, result, arr, target - arr[i]);
 			inner.remove(inner.size()-1);
 		}

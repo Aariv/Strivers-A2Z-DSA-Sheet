@@ -29,15 +29,16 @@ public class _02Generate_Paranthesis {
 	}
 
 	private static void generate(int n, String str, int open, int close, List<String> result) {
+		// collect the result as long as str.length is double the length
 		if(str.length() == n * 2) {
 			result.add(str);
 			return;
 		}
-		
+		// if open is less than n, keep adding (
 		if(open < n) {
 			generate(n, str + "(", open + 1, close, result);
 		}
-		
+		// if close is less than open, keep adding )
 		if(close < open) {
 			generate(n, str + ")", open, close + 1, result);
 		}
