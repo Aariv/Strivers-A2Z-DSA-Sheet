@@ -55,24 +55,6 @@ public class _06CombinationSum {
 		combinationSumLoop(arr.length, 0, inner, result, arr, target);
 		return result;
 	}
-
-	private static void printSubSequence(
-			int n, 
-			int idx, 
-			List<Integer> inner, 
-			List<List<Integer>> result,
-			int[] arr) {
-		if(idx == n) {
-			result.add(new ArrayList<Integer>(inner));
-			return;
-		}
-		// Pick
-		inner.add(arr[idx]);
-		printSubSequence(n, idx + 1, inner, result, arr);
-		// Not Pick
-		inner.remove(inner.size()-1);
-		printSubSequence(n, idx + 1, inner, result, arr);
-	}
 	
 	private static void combinationSumLoop(
 										int n,

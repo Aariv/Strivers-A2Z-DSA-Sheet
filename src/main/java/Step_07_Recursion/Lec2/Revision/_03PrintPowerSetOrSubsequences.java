@@ -21,7 +21,7 @@ import java.util.List;
 public class _03PrintPowerSetOrSubsequences {
 
 	public static void main(String[] args) {
-		int[] arr = {1, 2, 3};
+		int[] arr = {1, 2, 3, 4};
 		System.out.println(printSubSequence(arr));
 	}
 	
