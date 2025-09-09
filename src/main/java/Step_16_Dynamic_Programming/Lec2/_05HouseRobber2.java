@@ -30,20 +30,16 @@ public class _05HouseRobber2 {
 
 	public static void main(String[] args) {
 		int[] nums = {2, 1, 4, 9};
-		System.out.println("Recur: "+ sum(nums, nums.length-1));
-		System.out.println("Memoization: " + maxSumNonAdjacentMemoization(nums));
-		System.out.println("Tab: " + maxSumNonAdjacentTabulation(nums));
+		System.out.println("Recur: "+ houseRobber2Helper(nums, nums.length));
+		System.out.println("Memoization: " + houseRobber2MemoHelper(nums, nums.length));
+		System.out.println("Tab: " + houseRobber2TabulationHelper(nums, nums.length));
 	}
 	
-	/**
-	 * 
-	 * @param nums
-	 * @return
-	 */
-	private static int maxSumNonAdjacentTabulation(int[] nums) {
+	private static int houseRobber2TabulationHelper(int[] nums, int ind) {
 		int n = nums.length;
 		int[] dp = new int[n];
 		dp[0] = nums[0];
+		dp[1] = nums[1];
 		for(int i = 1; i < n; i++) {
 			int pick = Integer.MIN_VALUE;
 			if(i>=2) {
@@ -54,41 +50,50 @@ public class _05HouseRobber2 {
 		}
 		return dp[n-1];
 	}
-
-	private static int maxSumNonAdjacentMemoization(int[] nums) {
-		int ind = nums.length;
-		int[] dp = new int[ind];
-		Arrays.fill(dp, -1);
+	
+	private static int houseRobber2MemoHelper(int[] nums, int ind) {
+		int[] dp1 = new int[ind];
+		Arrays.fill(dp1, -1);
 		
-		return sum(nums, ind-1, dp);
-	}
-
-	private static int sum(int[] nums, int ind, int[] dp) {
-		if(ind == 0) {
-			return dp[ind] = nums[0];
-		}
-		if(ind < 0) {
-			return 0;
-		}
-		if(dp[ind] != -1) {
-			return dp[ind];
-		}
-		int pick = nums[ind] + sum(nums, ind-2, dp);
-		int notPick = 0 + sum(nums, ind-1, dp);
-		
-		return Math.max(pick, notPick);
+		int[] dp2 = new int[ind];
+		Arrays.fill(dp2, -1);
+		int res1 = houseRobber2Memo(0,  ind-2, nums, dp1);
+		int res2 = houseRobber2Memo(1,  ind-1, nums, dp2);
+		return Math.max(res1, res2);
 	}
 	
-	private static int sum(int[] nums, int ind) {
-		if(ind == 0) {
-			return nums[0];
+	private static int houseRobber2Memo(int start, int end, int[] nums, int[] dp) {
+		if(end == start) {
+			return dp[end] = nums[end];
 		}
-		if(ind < 0) {
+		if(end < start) {
 			return 0;
 		}
-		int pick = nums[ind] + sum(nums, ind-2);
-		int notPick = 0 + sum(nums, ind-1);
+
+		if(dp[end] != -1) {
+			return dp[end];
+		}
 		
+		int pick = nums[end] + houseRobber2Memo(start, end-2, nums, dp);
+		int notPick = 0 + houseRobber2Memo(start, end-1, nums, dp);
+		return Math.max(pick, notPick);
+	}
+
+	private static int houseRobber2Helper(int[] nums, int ind) {
+		int res1 = houseRobber2(0,  ind-2, nums);
+		int res2 = houseRobber2(1,  ind-1, nums);
+		return Math.max(res1, res2);
+	}
+	
+	private static int houseRobber2(int start, int end, int[] nums) {
+		if(end == start) {
+			return nums[end];
+		}
+		if(end < start) {
+			return 0;
+		}
+		int pick = nums[end] + houseRobber2(start, end-2, nums);
+		int notPick = 0 + houseRobber2(start, end-1, nums);
 		return Math.max(pick, notPick);
 	}
 }
