@@ -29,7 +29,7 @@ import java.util.Arrays;
 public class _05HouseRobber2 {
 
 	public static void main(String[] args) {
-		int[] nums = {2, 1, 4, 9};
+		int[] nums = {1, 5, 2, 1, 6};
 		System.out.println("Recur: "+ houseRobber2Helper(nums, nums.length));
 		System.out.println("Memoization: " + houseRobber2MemoHelper(nums, nums.length));
 		System.out.println("Tab: " + houseRobber2TabulationHelper(nums, nums.length));
