@@ -1,5 +1,8 @@
 package Step_15_Graphs.Lec2;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Given an undirected graph with V vertices. Two vertices u and v belong to a
  * single province if there is a path from u to v or v to u. Find the number of
@@ -59,5 +62,21 @@ public class _01NumberOfProvinces {
 				dfs(j, adj, visited);
 			}
 		}
+	}
+	
+	private void bfs(int[][] isConnected, boolean[] visited, int start) {
+	    Queue<Integer> queue = new LinkedList<>();
+	    queue.add(start);
+	    visited[start] = true;
+
+	    while (!queue.isEmpty()) {
+	        int node = queue.poll();
+	        for (int j = 0; j < isConnected.length; j++) {
+	            if (isConnected[node][j] == 1 && !visited[j]) {
+	                queue.add(j);
+	                visited[j] = true;
+	            }
+	        }
+	    }
 	}
 }

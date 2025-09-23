@@ -1,6 +1,15 @@
 package Step_15_Graphs.Lec2;
 
 public class _02NumberOfIslands {
+	
+	public static void main(String[] args) {
+		int[][] grid = {
+				{1,1,0,0},
+				{1,1,0,0},
+				{0,0,1,0},
+				{0,0,0,1}
+		};
+	}
 
 	public static int numIslands(char[][] grid) {
         int rows = grid.length;
